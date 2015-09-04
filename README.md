@@ -122,7 +122,7 @@ Let's write a program that can greet a person by name:
 
 iox is based around temporary variables being passed down "the stream".  Generally these are single values or a list of values.
 
-Variables are composite, meaning multiple variables can act as a single variable and our unpacked consequentively.
+Variables are composite, meaning multiple variables can act as a single variable and our unpacked consecutively.
 For example,
 
 ```
