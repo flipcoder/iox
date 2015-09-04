@@ -40,11 +40,14 @@ To get line-based input, use "in".
 
 ```
 "Enter your name: " in $name
+'Hello, ', $name out
 ```
 
 The message "Enter your name: " is passed to *in*, which is displayed as a prompt.
 *in* will pipe the string it receives from the user on to the next token.
 In this case, it is stored in $name.
+
+The next line sends two strings to *out* which prints the appended greeting.
 
 ### Variables
 
@@ -90,12 +93,16 @@ Conditions are done with "?" representing the initial test,
 and the code to run in either scenario
 
 ```
-'Enter a boolean (true/false): ' in bool $test
+'Enter a string (may be blank): ' in $s
 
-$test ?
-    'test is true!' out
+$s ?
+    'String was not empty' out
 else
-    'test is false!' out
+    'String was empty' out
+
+# or store as bool
+$s bool $was_empty
+
 ```
 
 The *?* symbol is used for branching based on the contents of a stream.
@@ -110,38 +117,52 @@ parameters first, separated by commas, then we call the function.
 1,2,3 + out
 ```
 
-This takes the 3 numbers, calls "+", which adds them all, then pipes that to out, which prints them. :)
+This takes the 3 numbers, calls "+", which adds them all, then pipes that to out, which prints them.
 
-Let's write a program that can greet a person by name:
-
-```
-'Enter your name: ' in $name
-'Hello, ', $name out
-```
 ### Packing/Unpacking
 
 iox is based around temporary variables being passed down "the stream".  Generally these are single values or a list of values.
 
-Variables are composite, meaning multiple variables can act as a single variable and our unpacked consecutively.
+Variables are composite, meaning they can hold more than one value without being considered a special list type.
+Because of this, they are unpacked consecutively.
+
 For example,
 
 ```
+# unpacking:
 1,2,3 $numbers
 0, $numbers, 4
+
+1 type out
+# -> int
+
+1,2 type out
+# -> int,int
+
+```
+
+The underscore (*_*) symbol indicates the insertion point for the pipe contents.
+We can use this for appending and reordering values.
+
+```
+1,2,3
+# is equivalent to:
+2,3 1,_
+
+#example using string formating
+$name 'Hello ',_,'!' out
 ```
 
 ### Scope
 
-Indentations can push/pop scope.
+Indentations can push/pop scope.  The underscore (*_*) recalls the parent scope's pipe contents.
 
 ```
 1,2
     + $sum
-    - $diff
+    _ - $diff
     (_),(1,2) == assert
 ```
-
-Notice that 1,2 remains in the stream for each line in the indent.
 
 ### Functions
 
