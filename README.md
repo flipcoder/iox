@@ -80,7 +80,7 @@ $num1,$num2 + out
 Notice the comma.  Commas are used to batch multiple things to send to a pipe.
 The *+* function sums all the parameters together, and returns this number
 
-### Conditions
+### Branching
 
 (I haven't fully implemented this feature, so this section of the documentation will serve only as example.)
 
@@ -163,7 +163,7 @@ The function automatically returns the content of the pipe on the last
 effective line of the function.
 We can block this behavior with the *;* symbol at the end of the line.
 
-### Threads
+### Coroutines
 
 The below features have no not yet been implemented.
 
