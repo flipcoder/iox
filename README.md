@@ -7,9 +7,13 @@ It may be rewritten or improved if I like it enough ;)
 
 Not all features are implemented. This document is just a plan of how everything will function and behave!
 
+## Purpose
 
+Create a pipe-centric shell alternative to play with async and reactive concepts (futures, coroutines, signal wakeups, etc.).
 
-#### Input/Output
+## Basics
+
+### Input/Output
 
 ```
 'hello, world' out
@@ -200,7 +204,6 @@ alarm out # wake-up on event (availability of future 'alarm')
 
 ### What now?
 
-As noted before, not all the above features are implemented.
-
-More to come as I tinker! Thanks!
+As noted before, not all the above features are implemented.  And there are definitely bugs.
+More to come as I tinker.
 

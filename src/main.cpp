@@ -889,44 +889,6 @@ struct Context
         if(try_push<float>(s, Variable::Real, append_this))
             return true;
         
-        // function (TEMP, we'll make a umap lookup soon)
-        //if(s=="out") out();
-        //else if(s=="dbg") out(", ", true, true);
-        //else if(s=="?") {
-        //    if(!q())
-        //        return false;
-        //} else if(s=="not") notop();
-        //else if(s=="else") {}
-        //else if(s=="in") in();
-        //else if(s=="sleep") sleep();
-        //else if(s=="len") length();
-        //else if(s=="int") cast_int();
-        //else if(s=="real") cast_real();
-        //else if(s=="str") cast_str();
-        //else if(s=="bool") cast_bool();
-        //else if(s=="+") sum();
-        //else if(s=="-") diff();
-        //else if(s=="*") mult();
-        //else if(s=="/") div();
-        //else if(s=="_") {}
-        //else if(s=="flip") flip();
-        //else if(s=="rev") rev();
-        //else if(s=="seq") seq();
-        //else if(s=="<=") lte();
-        //else if(s==">=") gte();
-        //else if(s==">") gt();
-        //else if(s=="<") lt();
-        //else if(s=="==") cmp();
-        //else if(s=="!=") { cmp(); notop(); }
-        //else if(s=="rand") randint();
-        ////else if(s=="dist") dist();
-        //else if(s=="type") {
-        //    auto st = move(m_Stream.top());
-        //    for(auto&& t: st)
-        //        push<string>(m_TypeNames[t.type]);
-        //} else if(s==";") {
-        //    flush();
-        
         auto func = m_Funcs.find(s);
         if(func != m_Funcs.end())
             func->second();
